@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* a {
+  text-decoration: none !important;
+  color: inherit !important;
+} */
+
+@media print {
+  /* All your print styles go here */
+  .noprint {
+    display: none !important;
+  }
+}
+
+a:active {
+  background-color: white;
+  color: inherit !important;
+}
+
+.table td,
+thead {
+  text-align: center;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+h5 {
+  font-size: 1rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 300px) {
+  /*1rem = 16px*/
+  h5 {
+    font-size: 1rem !important;
+  }
+  h4 {
+    font-size: 1.1rem !important;
+  }
+  h3 {
+    font-size: 1.3rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h1 {
+    font-size: 1.7rem !important;
+  }
+  p {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {
+  /*1rem = 16px*/
+  h5 {
+    font-size: 1.1rem !important;
+  }
+  h4 {
+    font-size: 1.2rem !important;
+  }
+  h3 {
+    font-size: 1.3rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h1 {
+    font-size: 1.7rem !important;
+  }
+  p {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  /*1rem = 16px*/
+  h5 {
+    font-size: 1.1rem !important;
+  }
+  h4 {
+    font-size: 1.3rem !important;
+  }
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.7rem !important;
+  }
+  h1 {
+    font-size: 1.9rem !important;
+  }
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /*1rem = 16px*/
+  h5 {
+    font-size: 1.2rem !important;
+  }
+  h4 {
+    font-size: 1.4rem !important;
+  }
+  h3 {
+    font-size: 1.6rem !important;
+  }
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /*1rem = 16px*/
+  h5 {
+    font-size: 1.3rem !important;
+  }
+  h4 {
+    font-size: 1.5rem !important;
+  }
+  h3 {
+    font-size: 1.7rem !important;
+  }
+  h2 {
+    font-size: 1.9rem !important;
+  }
+  h1 {
+    font-size: 2.1rem !important;
+  }
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* .btn {
+  padding-top: 10px !important;
+} */
+
+main {
+  min-height: 80vh;
+}
+
+.price {
+  font-weight: 500;
+}
+.login {
+  height: 80vh;
+}
+.signup {
+  height: 80vh;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.colorPictures {
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.colorSelect {
+  border-style: solid;
+  border-width: 5px;
+  border-color: #00ead3;
+}
+
+.con {
+  position: relative;
+  width: 100%;
+}
+
+/* Make the image responsive */
+.con .imgg {
+  width: 50%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.con .btnn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bi-instagram {
+  color: transparent;
+  background: -webkit-radial-gradient(
+    30% 107%,
+    circle,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -o-radial-gradient(
+    30% 107%,
+    circle,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -webkit-radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+#myVideo {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  z-index: -100;
+  opacity: 0.7;
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+/* @media (min-width: 1150px) and (max-width: 2000px) {
+  .collapse {
+    display: none !important;
+  }
+} */
