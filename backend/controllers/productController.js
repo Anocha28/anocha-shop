@@ -179,6 +179,7 @@ const updateProduct = asyncHandler( async (req, res) => {
             product.size = sizeList
             product.color = colorList
             product.images = allImages
+            product.rating = product.rating
             await product.save()
             res.json({message: "successfully updated"})
         
@@ -201,6 +202,7 @@ const updateProduct = asyncHandler( async (req, res) => {
             product.size = sizeList
             product.color = colorList
             product.images = allImages
+            product.rating = product.rating
             await product.save()
             res.json({message: "successfully updated"})
         }
