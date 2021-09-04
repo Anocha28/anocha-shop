@@ -10,16 +10,14 @@ const addDecimals = (num) => {
 
 const ProductListScreen = ({product}) => {
     return (
-        <Card className='p-0' style={{padding: '5px'}}>
+        <LinkContainer to={`/product/${product._id}`} className='m-0 p-0'>
+        <Card className='p-0 shadow' style={{padding: '5px'}}>
             <Link to={`/product/${product._id}`}>
             <Card.Img src={`/${product.images[0]}`} variant='top' style={{ height : '200px', objectFit: 'cover'}} />
             </Link>
             <Card.Body className='' style={{padding: '5px'}}>
-
-                <LinkContainer to={`/product/${product._id}`} className='m-0 p-0'>
                 <Card.Text className='m-0 p-0 text-nowrap overflow-hidden'><small>{product.name}</small></Card.Text>
-                </LinkContainer>
-
+                
                 <Card.Text className='m-0 p-0'>  
                     ${addDecimals(product.price)}                                   
                 </Card.Text>
@@ -36,6 +34,7 @@ const ProductListScreen = ({product}) => {
             </Card.Body>
             
         </Card>
+        </LinkContainer>
     )
 }
 

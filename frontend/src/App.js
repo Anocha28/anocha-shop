@@ -34,14 +34,13 @@ import AdminInventoryScreen from './Screen/AdminInventoryScreen';
 import OrderScreen from './Screen/OrderScreen';
 import AdminOrderListScreen from './Screen/AdminOrderListScreen';
 import AdminOrderScreen from './Screen/AdminOrderScreen';
-import AdminInventoryListScreen from './Screen/AdminInventoryListScreen';
+//import AdminInventoryListScreen from './Screen/AdminInventoryListScreen';
 import ShopNowScreen from './Screen/ShowNowScreen';
 import AdminContactUsListScreen from './Screen/AdminContactUsListScreen';
 import ForgotPaswordScreen from './Screen/ForgotPaswordScreen';
 import ResetPasswordScreen from './Screen/ResetPasswordScreen';
-
-
-
+import AdminCategoryListScreen from './Screen/AdminCategoryListScreen';
+import AdminInventoryDataScreen from './Screen/AdminInventoryDataScreen';
 
 
 function App() {
@@ -73,8 +72,6 @@ function App() {
           <Route path='/forgotpassword/:id/:token' component={ResetPasswordScreen} exact/>
 
 
-
-
           <Route path='/returnandrefunds' component={ReturnScreen} />
           <Route path='/orderandpayment' component={OrderAndPaymentScreen} />
           <Route path='/delivery' component={ShippingAndDeliveryScreen} />
@@ -89,8 +86,9 @@ function App() {
           <Route path='/admin/products/new' component={AdminCreateProductScreen} />
           <Route path='/admin/colors/new' component={AdminCreateColorScreen} />
 
-          <Route path='/admin/inventory' component={AdminInventoryListScreen} />
+          <Route path='/admin/inventory' component={AdminInventoryDataScreen} />
           <Route path='/admin/contactus' component={AdminContactUsListScreen} />
+          <Route path='/admin/category' component={AdminCategoryListScreen} />
 
 
           <Route path='/admin/products' component={AdminProductListScreen} exact/>
@@ -125,7 +123,9 @@ function App() {
         </>
 
      </main>
+     <div>
      <Footer />
+     </div>
     </Router>
   );
 }

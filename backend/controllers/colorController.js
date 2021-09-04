@@ -45,7 +45,7 @@ const deleteColor = asyncHandler (async (req, res) => {
     const color = await Color.findById(req.params.id)
 
     if(color){        
-        //fs.unlinkSync(color.image)
+        fs.unlinkSync(color.image)
         await color.remove()
         res.json({message: 'Color removed'})
     } else {

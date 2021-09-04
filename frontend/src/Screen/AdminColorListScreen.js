@@ -108,7 +108,7 @@ const AdminColorListScreen = ({history}) => {
                                     size='sm'
                                     className='p-0'
                                     onClick={()=> deleteHandler(color._id)}
-                                    ><i className="bi bi-trash" style={{fontSize: '1.5rem'}}></i></Button>                                     */}
+                                    ><i className="bi bi-trash" style={{fontSize: '1.5rem'}}></i></Button>  */}
                                 </td>
                             </tr>
                         ))                      

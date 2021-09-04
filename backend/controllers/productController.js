@@ -99,7 +99,7 @@ const deleteProduct = asyncHandler( async (req, res) => {
 const createProduct = asyncHandler( async (req, res) => {
     const {code, name, description , price, category} = req.body
     const productExists = await Product.findOne({code})
-    //console.log(req.body)
+    console.log(req.body)
    if(productExists){
        res.status(400)
        throw new Error('This product code already in used.')
@@ -246,6 +246,37 @@ const createProductReview = asyncHandler( async (req, res) => {
    }
 })
 
+//@dec      Delete a review
+//@route    DELETE /api/products/:productId/:reviewId
+//@access   Private 
+const deleteProductReview = asyncHandler( async (req, res) => {
+    const {productId, reviewId} = req.params
+    console.log(productId, reviewId, req.user.id)
+    const product = await Product.findById(productId)
+
+   if(product) {
+       const reviewToDelete = product.reviews.find( r => r._id.toString() === reviewId.toString())
+       if(!reviewToDelete){
+           res.status(400)
+           throw new Error('Something went wrong, review not found.')
+       } 
+
+       if(reviewToDelete.user.toString() !== req.user.id.toString()){
+            res.status(404)
+            throw new Error('Not authorized.')
+       }
+       
+       await reviewToDelete.remove()       
+       product.numReviews = product.reviews.length
+       product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
+       await product.save()
+       res.status(201).json({message: 'Review removed.'})
+   } else {
+       res.status(400)
+       throw new Error('Invalid product data.')
+   }
+})
+
 
 //@dec      get top rated products
 //@route    GET /api/products/top
@@ -281,6 +312,7 @@ export {
     createProduct,
     updateProduct,
     createProductReview,
+    deleteProductReview,
     getTopProducts,
     getInventory,
     getShopNow,

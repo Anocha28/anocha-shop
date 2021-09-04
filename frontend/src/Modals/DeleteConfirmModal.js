@@ -15,7 +15,7 @@ const DeleteConfirmModal = ({deleteFunction, id}) => {
 
     return (
         <>
-            <Button variant="outline-danger" className='p-0' style={{fontSize: '1.5rem'}} onClick={handleShow}>
+            <Button size='sm' variant="outline-danger" className='p-0' style={{fontSize: '1.5rem'}} onClick={handleShow}>
             <i className="bi bi-trash px-2" style={{fontSize: '1.5rem'}}></i>
             </Button>
 

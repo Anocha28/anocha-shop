@@ -32,6 +32,10 @@ import {
     PRODUCT_SHOPNOW_SUCCESS,
     PRODUCT_SHOPNOW_FAIL,
     PRODUCT_SHOPNOW_DEFAULT,
+    PRODUCT_DELETE_REVIEW_REQUEST,
+    PRODUCT_DELETE_REVIEW_SUCCESS,
+    PRODUCT_DELETE_REVIEW_FAIL,
+    PRODUCT_DELETE_REVIEW_DEFAULT,
 } from '../constants/productConstants'
 
 
@@ -121,6 +125,21 @@ export const productCreateReviewReducer = (state = {}, action) => {
         case PRODUCT_CREATE_REVIEW_FAIL: 
             return {loading: false, error: action.payload}
         case PRODUCT_CREATE_REVIEW_DEFAULT:
+            return {}
+        default:
+            return state
+    }
+}
+
+export const productDeleteReviewReducer = (state = {}, action) => {
+    switch(action.type){
+        case PRODUCT_DELETE_REVIEW_REQUEST:    
+            return {loading: true }
+        case PRODUCT_DELETE_REVIEW_SUCCESS: 
+            return {loading: false, success: true}
+        case PRODUCT_DELETE_REVIEW_FAIL: 
+            return {loading: false, error: action.payload}
+        case PRODUCT_DELETE_REVIEW_DEFAULT:
             return {}
         default:
             return state

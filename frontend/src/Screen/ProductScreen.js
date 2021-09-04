@@ -8,14 +8,14 @@ import {Row, Col, ListGroup, Spinner, Image,
 
 import Rating from '../Components/Rating'
 import {CarouselScreen} from '../Components/CarouselScreen'
-import {detailProduct, createProductReview} from '../actions/productActions'
+import {detailProduct, createProductReview, deleteReview} from '../actions/productActions'
 import {addToCart} from '../actions/cartActions'
 import {PRODUCT_DETAIL_CLEAR} from '../constants/productConstants'
 import { PRODUCT_CREATE_REVIEW_DEFAULT } from '../constants/productConstants'
 // import { LinkContainer } from 'react-router-bootstrap'
 
 const ProductScreen = ({match}) => {
-    
+    const productId = match.params.id
     const dispatch = useDispatch()
     
     const [qty, setQty] = useState(1)
@@ -42,6 +42,9 @@ const ProductScreen = ({match}) => {
     const productCreateReview = useSelector(state => state.productCreateReview)
     const {loading: loadingReview, error: errorReview, success} = productCreateReview
 
+    const productDeleteReview = useSelector(state => state.productDeleteReview)
+    const {loading: loadingDeleteReview, error: errorDeleteReview, success: successDeleteReveiw} = productDeleteReview
+
     //const colorList = product.inventory.map(c => { return {'code': c.color.code, 'name': c.color.name, 'image': c.color.image}})
     //const inventoryList = [...new Map(colorList.map(item => [item['code'], item])).values()]
     //const finalColors = [...new Set(colorList)]
@@ -58,12 +61,13 @@ const ProductScreen = ({match}) => {
             setComment('')
         }
         dispatch(detailProduct(match.params.id))
+        
         return () => {
             dispatch({type: PRODUCT_DETAIL_CLEAR})
             dispatch({type: PRODUCT_CREATE_REVIEW_DEFAULT})
             setReviewWarning(null)
         }
-    },[dispatch, match, success])
+    },[dispatch, match, success, successDeleteReveiw])
 
 
     const addDecimals = (num) => {
@@ -131,6 +135,10 @@ const ProductScreen = ({match}) => {
             dispatch(addToCart(product._id, inventory, sizeSelect, qty))
             setAddToCartAlert(true)
         }  
+    }
+
+    const handleDeleteReview = (id) => {
+        dispatch(deleteReview(productId, id))
     }
     return (
         <>        
@@ -329,13 +337,30 @@ const ProductScreen = ({match}) => {
 
         <Row className='border-top'>
             <Col md={6} >
+            {loadingDeleteReview && <div className='text-center'><Spinner animation="border" variant="secondary" /></div> }
+            {errorDeleteReview && <Alert variant='warning'>{errorDeleteReview}</Alert>}
             <h2 className='my-3'>Product reviews</h2>
                 {product.reviews.length === 0 && <Alert variant='info'>No reviews</Alert>}
                 <ListGroup variant='flush' >
                     {product.reviews.map( r => (
                         <ListGroup.Item key={r._id} className='m-0 p-2'>
+                            <div className='d-flex justify-content-between'>
+                            <span>
                             <strong className='mr-3'>{r.name}</strong>
                             <Rating value={r.rating} />
+                            </span>
+                            <span className='ml-auto'>
+                            {userInfo._id === r.user &&
+                                <Button 
+                                    size="sm"
+                                    variant='dark'
+                                    className='m-0 py-0 px-1'
+                                    onClick={()=>handleDeleteReview(r._id)}
+                                    ><i className="bi bi-x-square m-0 p-0"></i>
+                                </Button>
+                            }
+                            </span>
+                            </div>
                             <p><small><Moment format="DD MMM YY">{r.createAt}</Moment></small></p>
                             <p>{r.comment}</p>
                         </ListGroup.Item>

@@ -3,16 +3,20 @@ import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col, FormControl, InputGroup, Spinner, Alert, Container} from 'react-bootstrap'
 import {createProduct} from '../actions/productActions'
+import { listCategory } from '../actions/categoryActions'
 import {PRODUCT_CREATE_DEFAULT} from '../constants/productConstants'
 import AddingColorModal from '../Modals/AddingColorModal'
 
 const AdminCreateProductScreen = ({history}) => {
 
     const dispatch = useDispatch()
-    const categoryList = ['Category1','Category2','Category3','Category4','Category5']
+    //const categoryList = ['Category1','Category2','Category3','Category4','Category5']
 
     const productCreate = useSelector(state=>state.productCreate)
     const {loading, error, success} = productCreate
+
+    const categoryList = useSelector(state=>state.categoryList)
+    const {loading: loadingCategory, error: errorCategory, categories} = categoryList
     
 
     const [XS, setXS] = useState(false)
@@ -33,6 +37,7 @@ const AdminCreateProductScreen = ({history}) => {
 
 
     useEffect(()=>{
+        dispatch(listCategory())
         if(success) {
             dispatch({type: PRODUCT_CREATE_DEFAULT})
             history.push('/admin/products')
@@ -100,9 +105,11 @@ const AdminCreateProductScreen = ({history}) => {
             <Form onSubmit={submitHandler} autoComplete='off' noValidate>    
 
             {error && <Alert variant='danger'>{error}</Alert>}
+            {errorCategory && <Alert variant='danger'>{errorCategory}</Alert>}
             {warning && <Alert variant='danger'>{warning}</Alert>}
             
             {loading && <div className='text-center'><Spinner animation="border" variant="secondary" /></div>}            
+            {loadingCategory && <div className='text-center'><Spinner animation="border" variant="secondary" /></div>}            
             <Form.Group as={Row} className="mb-3">
                 <Form.Label column sm={3}>
                 Code <small className='text-muted'>(required)</small>
@@ -165,12 +172,12 @@ const AdminCreateProductScreen = ({history}) => {
                 </Form.Label>
                 <Col sm={9}>
                 <Form.Control as='select' onChange={e => setCategory(e.target.value)}>                    
-                    {categoryList.map((c, index)=> (                        
+                    {categories && categories.map((c, index)=> (                        
                         <option 
                         key={index}
-                        value={c}
+                        value={c.category}
                         
-                        >{c}</option>
+                        >{c.category}</option>
                     ))}
                 </Form.Control>   
                 <Button 

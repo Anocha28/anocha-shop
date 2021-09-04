@@ -7,6 +7,7 @@ import {
     createProduct,
     updateProduct,
     createProductReview,
+    deleteProductReview,
     getTopProducts,
     getInventory,
     getShopNow,
@@ -25,6 +26,8 @@ router.route('/inventory')
     .get(protect, admin, getInventory)
 router.route('/shopnow')
     .get(getShopNow)
+router.route('/:productId/:reviewId')
+    .delete(protect, deleteProductReview)
 router.route('/:id')
     .get(getProductById)
     .put(protect, admin, fileUpload.array('files'), updateProduct)

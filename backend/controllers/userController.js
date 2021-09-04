@@ -181,8 +181,8 @@ const updateUser = asyncHandler (async (req, res) => {
 })
 
 
-//@dec      Register a new user
-//@route    POST /api/users
+//@dec      Crate a contact to admin
+//@route    POST /api/users/contact
 //@access   Public
 const contactUs = asyncHandler (async (req, res) => {
 
@@ -201,8 +201,8 @@ const contactUs = asyncHandler (async (req, res) => {
         }
 })
 
-//@dec      Register a new user
-//@route    POST /api/users
+//@dec      Get contact us message list
+//@route    POST /api/users/contact
 //@access   Public
 const contactUsList = asyncHandler (async (req, res) => {
 

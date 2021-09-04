@@ -128,8 +128,8 @@ const AdminColorEditScreen = ({match, history}) => {
             <Form.Group as={Row}>
                 <Form.Label column sm={2}>Preview</Form.Label>
                 <Col sm={10}>
-                    <div style={{width: '100px'}}>
-                    {newImage ? <><Image src={URL.createObjectURL(newImage)} /> 
+                    <div style={{width: '100px'}} className='d-flex'>
+                    {newImage ? <><Image src={URL.createObjectURL(newImage)} className='shadow' style={{width: '100px'}} /> 
                     <Button 
                     size='sm'
                     variant='outline-dark'
@@ -138,7 +138,7 @@ const AdminColorEditScreen = ({match, history}) => {
                     ><i className="bi bi-trash"></i></Button>
                     </>
                     :
-                    <Image src={`/${color.image}`} alt={color.name} fluid/>
+                    <Image src={`/${color.image}`} alt={color.name} className='shadow' fluid/>
                     }
                     </div>
                 </Col>

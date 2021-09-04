@@ -17,7 +17,7 @@ import {
     COLOR_UPDATE_FAIL,
 } from '../constants/colorContants'
 
-export const listColors = () => async(dispatch, getState) => {
+export const listColors = (keyword = '', pageNumber = '', pageSize = '') => async(dispatch, getState) => {
     try {
         dispatch({
             type: COLOR_LIST_REQUEST
@@ -28,7 +28,7 @@ export const listColors = () => async(dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const {data} = await axios.get('/api/colors', config)
+        const {data} = await axios.get(`/api/colors?keyword=${keyword}&pageNumber=${pageNumber}&pageSize=${pageSize}`, config)
         dispatch({
             type: COLOR_LIST_SUCCESS, 
             payload: data

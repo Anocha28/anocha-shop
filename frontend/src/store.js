@@ -12,6 +12,7 @@ import {
     productTopRatedReducer,
     productInventoryReducer,
     productShopNowReducer,
+    productDeleteReviewReducer,
 } from './reducers/productReducers'
 import {cartReducer} from './reducers/cartReducers'
 import {
@@ -36,7 +37,15 @@ import {
     colorUpdateReducer,
 } from './reducers/colorReducers'
 import {
+    categoryCreateReducer,
+    categoryDeleteReducer,
+    categoryListReducer,
+    categoryUpdateReducer,
+} from './reducers/categoryReducers'
+import {
     addInventoryReducer,
+    deleteInventoryReducer,
+    updateInventoryReducer,
 } from './reducers/inventoryReducers'
 import {
     orderCreateReducer, 
@@ -55,6 +64,7 @@ const reducer = combineReducers({
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
     productCreateReview: productCreateReviewReducer,
+    productDeleteReview: productDeleteReviewReducer,
     productTopRated: productTopRatedReducer,
     productInventory: productInventoryReducer,
     productShopNow: productShopNowReducer,
@@ -78,7 +88,14 @@ const reducer = combineReducers({
     colorDetail: colorDetailReducer,
     colorUpdate: colorUpdateReducer,
 
+    categoryList: categoryListReducer,
+    categoryCreate: categoryCreateReducer,
+    categoryDelete: categoryDeleteReducer,
+    categoryUpdate: categoryUpdateReducer,
+
     addInventory: addInventoryReducer,
+    deleteInventory: deleteInventoryReducer,
+    updateInventory: updateInventoryReducer,
 
     orderCreate: orderCreateReducer,
     orderDetail: orderDetailReducer,

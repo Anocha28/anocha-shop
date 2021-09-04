@@ -27,6 +27,9 @@ import {
     PRODUCT_SHOPNOW_REQUEST,
     PRODUCT_SHOPNOW_SUCCESS,
     PRODUCT_SHOPNOW_FAIL,
+    PRODUCT_DELETE_REVIEW_REQUEST,
+    PRODUCT_DELETE_REVIEW_SUCCESS,
+    PRODUCT_DELETE_REVIEW_FAIL,
 } from '../constants/productConstants'
 
 
@@ -176,6 +179,32 @@ export const createProductReview = (productId, data) => async (dispatch, getStat
     } catch (error) {
         dispatch({
             type: PRODUCT_CREATE_REVIEW_FAIL, 
+            payload: error.response && error.response.data.message ? 
+                     error.response.data.message : error.message
+        })
+    }
+}
+
+
+export const deleteReview = (productId, reviewId) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_DELETE_REVIEW_REQUEST
+        })
+        const {userLogin: {userInfo}} = getState()
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',              
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }        
+        await axios.delete(`/api/products/${productId}/${reviewId}`, config)
+        dispatch({
+            type: PRODUCT_DELETE_REVIEW_SUCCESS,
+        })
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_DELETE_REVIEW_FAIL, 
             payload: error.response && error.response.data.message ? 
                      error.response.data.message : error.message
         })

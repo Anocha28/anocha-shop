@@ -9,6 +9,7 @@ import productRoutes from '../backend/routes/productRoutes.js'
 import userRoutes from '../backend/routes/userRoutes.js'
 import uploadRoutes from '../backend/routes/uploadRoutes.js'
 import colorRoutes from '../backend/routes/colorRoutes.js'
+import categoryRoutes from '../backend/routes/categoryRoutes.js'
 import orderRoutes from '../backend/routes/orderRoutes.js'
 import inventoryRoutes from '../backend/routes/inventoryRoutes.js'
 import expressSM from 'express-status-monitor'
@@ -29,8 +30,10 @@ app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/colors', colorRoutes)
 app.use('/api/orders', orderRoutes)
+app.use('/api/category', categoryRoutes)
 app.use('/api/inventory', inventoryRoutes)
 app.use('/api/upload', uploadRoutes)
+
 
 app.get('/api/config/paypal', (req, res)=> res.send(process.env.PAYPAL_CLIENT_ID))
 

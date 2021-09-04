@@ -50,31 +50,6 @@ const Header = () => {
 
             <Nav className="ml-auto autohide pr-3 mr-4" align='end'>
 
-            {/* <NavDropdown title="Customer Care" className='mx-1'>
-                <LinkContainer to='/help'>
-                <NavDropdown.Item>Help Center</NavDropdown.Item>
-                </LinkContainer>
-
-                <LinkContainer to='/delivery'>
-                <NavDropdown.Item>Shipping & Delivery</NavDropdown.Item>
-                </LinkContainer>
-
-                <LinkContainer to='/orderandpayment'>
-                <NavDropdown.Item>Orders & Payment</NavDropdown.Item>
-                </LinkContainer>
-
-                <LinkContainer to='/returnandrefunds'>
-                <NavDropdown.Item>Return & Refunds</NavDropdown.Item>
-                </LinkContainer>
-
-                <NavDropdown.Divider />
-
-                <LinkContainer to='/contact'>
-                <NavDropdown.Item>Contact Us</NavDropdown.Item>
-                </LinkContainer>
-                
-                </NavDropdown> */}
-
                 <LinkContainer to='/cart' className='mx-1'>
                     <Nav.Link className='d-flex'>
                     <div>
@@ -84,10 +59,6 @@ const Header = () => {
                     </div>
                     </Nav.Link>
                 </LinkContainer>
-
-            {/* <LinkContainer to='/tracking' className='px-4'>
-                <Nav.Link>Track Order</Nav.Link>
-            </LinkContainer> */}
 
             {userInfo && userInfo.isAdmin && (
                 <>
@@ -119,6 +90,12 @@ const Header = () => {
                 <LinkContainer to='/admin/users' >
                     <NavDropdown.Item>
                         Users
+                    </NavDropdown.Item> 
+                </LinkContainer>
+
+                <LinkContainer to='/admin/category' >
+                    <NavDropdown.Item>
+                        Categories
                     </NavDropdown.Item> 
                 </LinkContainer>
                               
